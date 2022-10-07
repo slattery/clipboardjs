@@ -1,0 +1,248 @@
+<?php
+
+/**
+ * @file
+ * Contains clipboardjs.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+
+/**
+ * Implements hook_help().
+ */
+function clipboardjs_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.clipboardjs':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Clipboard.js') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function clipboardjs_theme($existing, $type, $theme, $path) {
+  $cjs_settings = \Drupal::config('clipboardjs.settings');
+  $cjs_use_alts = $cjs_settings->get('css_override');
+
+  $tip = $cjs_use_alts ? $cjs_settings->get('alt_tooltipclass') : $cjs_settings->get('def_tooltipclass');
+  $txt = $cjs_use_alts ? $cjs_settings->get('alt_tooltxtclass') : $cjs_settings->get('def_tooltxtclass');
+
+  return [
+    'clipboardjs_button' => [
+      'variables' => [
+        'value' => NULL,
+        'label' => t('Click to copy'),
+        'alert_style' => 'iconswap',
+        'alert_text' => t('Copied!'),
+        'tooltipclass' => $tip,
+        'tooltxtclass' => $txt,
+        'height' => 13,
+        'width' => 13,
+        'attributes' => NULL,
+      ],
+    ],
+    'clipboardjs_snippet' => [
+      'variables' => [
+        'value' => NULL,
+        'label' => t('Click to copy'),
+        'alert_style' => 'tooltip',
+        'alert_text' => t('Copied!'),
+        'tooltipclass' => $tip,
+        'tooltxtclass' => $txt,
+        'height' => 13,
+        'width' => 13,
+        'attributes' => NULL,
+      ],
+    ],
+    'clipboardjs_textarea' => [
+      'variables' => [
+        'value' => NULL,
+        'label' => t('Click to copy'),
+        'alert_style' => 'tooltip',
+        'alert_text' => t('Copied!'),
+        'tooltipclass' => $tip,
+        'tooltxtclass' => $txt,
+        'height' => 13,
+        'width' => 13,
+        'attributes' => NULL,
+      ],
+    ],
+    'clipboardjs_textfield' => [
+      'variables' => [
+        'value' => NULL,
+        'label' => t('Click to copy'),
+        'alert_style' => 'tooltip',
+        'alert_text' => t('Copied!'),
+        'tooltipclass' => $tip,
+        'tooltxtclass' => $txt,
+        'height' => 13,
+        'width' => 13,
+        'attributes' => NULL,
+      ],
+    ],
+    'clipboardjs_fieldablepath' => [
+      'variables' => [
+        'value' => NULL,
+        'label' => t('Click to copy'),
+        'alert_style' => 'iconswap',
+        'alert_text' => t('Copied!'),
+        'tooltipclass' => $tip,
+        'tooltxtclass' => $txt,
+        'height' => 13,
+        'width' => 13,
+        'attributes' => NULL,
+      ],
+    ],
+    'clipboardjs_entityreference' => [
+      'variables' => [
+        'value' => NULL,
+        'label' => t('Click to copy'),
+        'alert_style' => 'iconswap',
+        'alert_text' => t('Copied!'),
+        'tooltipclass' => $tip,
+        'tooltxtclass' => $txt,
+        'height' => 13,
+        'width' => 13,
+        'attributes' => NULL,
+      ],
+    ],
+    // @todo deprecated in 2.0.2 and is removed from 2.1.0.
+    'clipboardjs' => [
+      'variables' => [
+        'text' => NULL,
+        'value' => NULL,
+        'label' => t('Click to copy'),
+        'alert_style' => 'tooltip',
+        'alert_text' => t('Copied!'),
+        'tooltipclass' => $tip,
+        'tooltxtclass' => $txt,
+        'height' => 13,
+        'width' => 13,
+        'attributes' => NULL,
+      ],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ *
+ * @deprecated in 2.0.2 and is removed from 2.1.0.
+ */
+function clipboardjs_preprocess_clipboardjs(&$variables) {
+  $variables['attributes']['id'] = uniqid('clipboardjs-');
+  $variables['module_path'] = base_path() . \Drupal::service('extension.list.module')->getPath('clipboardjs');
+  if (!empty($variables['text'])
+    && empty($variables['value'])) {
+    $variables['value'] = $variables['text'];
+  }
+  if( !empty($variables['tooltipclass'])
+    && empty($variables['#attached']['drupalSettings']['clipboardjs'])){
+      $variables['#attached']['drupalSettings']['clipboardjs']['tooltipclass'] = $variables['tooltipclass']; 
+      $variables['#attached']['drupalSettings']['clipboardjs']['tooltxtclass'] = $variables['tooltxtclass'];
+      $variables['#attached']['drupalSettings']['clipboardjs']['clickimg'] = $variables['module_path'] . '/images/copy-solid.svg';
+      $variables['#attached']['drupalSettings']['clipboardjs']['checkimg'] = $variables['module_path'] . '/images/check-solid.svg';
+  } 
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function clipboardjs_preprocess_clipboardjs_button(&$variables) {
+  $variables['attributes']['id'] = uniqid('clipboardjs-');
+  $variables['module_path'] = base_path() . \Drupal::service('extension.list.module')->getPath('clipboardjs');
+  if( !empty($variables['tooltipclass'])
+    && empty($variables['#attached']['drupalSettings']['clipboardjs'])){
+      $variables['#attached']['drupalSettings']['clipboardjs']['tooltipclass'] = $variables['tooltipclass']; 
+      $variables['#attached']['drupalSettings']['clipboardjs']['tooltxtclass'] = $variables['tooltxtclass'];
+      $variables['#attached']['drupalSettings']['clipboardjs']['clickimg'] = $variables['module_path'] . '/images/copy-solid.svg';
+      $variables['#attached']['drupalSettings']['clipboardjs']['checkimg'] = $variables['module_path'] . '/images/check-solid.svg';
+
+  } 
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function clipboardjs_preprocess_clipboardjs_snippet(&$variables) {
+  $variables['attributes']['id'] = uniqid('clipboardjs-');
+  $variables['module_path'] = base_path() . \Drupal::service('extension.list.module')->getPath('clipboardjs');
+    if( !empty($variables['tooltipclass'])
+    && empty($variables['#attached']['drupalSettings']['clipboardjs'])){
+      $variables['#attached']['drupalSettings']['clipboardjs']['tooltipclass'] = $variables['tooltipclass']; 
+      $variables['#attached']['drupalSettings']['clipboardjs']['tooltxtclass'] = $variables['tooltxtclass'];
+      $variables['#attached']['drupalSettings']['clipboardjs']['clickimg'] = $variables['module_path'] . '/images/copy-solid.svg';
+      $variables['#attached']['drupalSettings']['clipboardjs']['checkimg'] = $variables['module_path'] . '/images/check-solid.svg';
+
+  } 
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function clipboardjs_preprocess_clipboardjs_textarea(&$variables) {
+  $variables['attributes']['id'] = uniqid('clipboardjs-');
+  $variables['module_path'] = base_path() . \Drupal::service('extension.list.module')->getPath('clipboardjs');
+    if( !empty($variables['tooltipclass'])
+    && empty($variables['#attached']['drupalSettings']['clipboardjs'])){
+      $variables['#attached']['drupalSettings']['clipboardjs']['tooltipclass'] = $variables['tooltipclass']; 
+      $variables['#attached']['drupalSettings']['clipboardjs']['tooltxtclass'] = $variables['tooltxtclass'];
+      $variables['#attached']['drupalSettings']['clipboardjs']['clickimg'] = $variables['module_path'] . '/images/copy-solid.svg';
+      $variables['#attached']['drupalSettings']['clipboardjs']['checkimg'] = $variables['module_path'] . '/images/check-solid.svg';
+
+  } 
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function clipboardjs_preprocess_clipboardjs_textfield(&$variables) {
+  $variables['attributes']['id'] = uniqid('clipboardjs-');
+  $variables['module_path'] = base_path() . \Drupal::service('extension.list.module')->getPath('clipboardjs');
+    if( !empty($variables['tooltipclass'])
+    && empty($variables['#attached']['drupalSettings']['clipboardjs'])){
+      $variables['#attached']['drupalSettings']['clipboardjs']['tooltipclass'] = $variables['tooltipclass']; 
+      $variables['#attached']['drupalSettings']['clipboardjs']['tooltxtclass'] = $variables['tooltxtclass'];
+      $variables['#attached']['drupalSettings']['clipboardjs']['clickimg'] = $variables['module_path'] . '/images/copy-solid.svg';
+      $variables['#attached']['drupalSettings']['clipboardjs']['checkimg'] = $variables['module_path'] . '/images/check-solid.svg';
+
+  } 
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function clipboardjs_preprocess_clipboardjs_fieldablepath(&$variables) {
+  $variables['attributes']['id'] = uniqid('clipboardjs-');
+  $variables['module_path'] = base_path() . \Drupal::service('extension.list.module')->getPath('clipboardjs');
+    if( !empty($variables['tooltipclass'])
+    && empty($variables['#attached']['drupalSettings']['clipboardjs'])){
+      $variables['#attached']['drupalSettings']['clipboardjs']['tooltipclass'] = $variables['tooltipclass']; 
+      $variables['#attached']['drupalSettings']['clipboardjs']['tooltxtclass'] = $variables['tooltxtclass'];
+      $variables['#attached']['drupalSettings']['clipboardjs']['clickimg'] = $variables['module_path'] . '/images/copy-solid.svg';
+      $variables['#attached']['drupalSettings']['clipboardjs']['checkimg'] = $variables['module_path'] . '/images/check-solid.svg';
+
+  } 
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function clipboardjs_preprocess_clipboardjs_entityreference(&$variables) {
+  $variables['attributes']['id'] = uniqid('clipboardjs-');
+  $variables['module_path'] = base_path() . \Drupal::service('extension.list.module')->getPath('clipboardjs');
+    if( !empty($variables['tooltipclass'])
+    && empty($variables['#attached']['drupalSettings']['clipboardjs'])){
+      $variables['#attached']['drupalSettings']['clipboardjs']['tooltipclass'] = $variables['tooltipclass']; 
+      $variables['#attached']['drupalSettings']['clipboardjs']['tooltxtclass'] = $variables['tooltxtclass'];
+      $variables['#attached']['drupalSettings']['clipboardjs']['clickimg'] = $variables['module_path'] . '/images/copy-solid.svg';
+      $variables['#attached']['drupalSettings']['clipboardjs']['checkimg'] = $variables['module_path'] . '/images/check-solid.svg';
+
+  } 
+}

@@ -1,0 +1,5 @@
+services:
+  clipboardjs.commands:
+    class: \Drupal\clipboardjs\Commands\ClipboardJsCommands
+    tags:
+      - { name: drush.command }

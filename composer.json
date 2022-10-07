@@ -1,0 +1,23 @@
+{
+    "name": "slattery/clipboardjs",
+    "type": "drupal-custom-module",
+    "description": "A modern fork of the approach to copy text to clipboard.",
+    "keywords": ["Drupal", "clipboard", "clipboardjs", "clipboard.js"],
+    "license": "GPL-2.0+",
+    "homepage": "https://www.drupal.org/project/clipboardjs",
+    "minimum-stability": "dev",
+    "support": {
+        "issues": "http://drupal.org/project/issues/clipboardjs",
+        "source": "http://cgit.drupalcode.org/clipboardjs"
+    },
+    "require": {
+        "ext-zip": "*"
+    },
+    "extra": {
+        "drush": {
+            "services": {
+                "drush.services.yml": "^10"
+            }
+        }
+    }
+}

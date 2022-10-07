@@ -1,0 +1,34 @@
+{#
+/**
+ * @file
+ * Default theme implementation to present a clipboard.js button.
+ *
+ * Available variables:
+ * - label: The button label.
+ * - value: The value to copy to the clipboard.
+ * - alert_style: The alert style e.g., tooltip, alert
+ * - alert_text: The alert text.
+ * - tooltipclass: CSS class name for tooltip div.
+ * - tooltxtclass: CSS class name for tool text span.
+ * - height: The button height.
+ * - width: The button width.
+ * - attributes: The element attributes.
+ * - module_path: The module path to render assets.
+ *
+ * @see clipboardjs_preprocess_clipboardjs_snippet()
+ *
+ * @ingroup themeable
+ */
+#}
+{{ attach_library('clipboardjs/snippet') }}
+{% spaceless %}
+  <pre class="clipboardjs clipboardjs-snippet">
+    <button class="clipboardjs-button" data-clipboard-alert="{{ alert_style }}" data-clipboard-alert-text="{{ alert_text }}" data-clipboard-target="#{{ attributes.id }}">
+      <div class="{{tooltipclass}}">
+        <img class="clippy" src="{{ module_path }}/images/clippy.svg" alt="{{ label }}" height="{{ height }}" width="{{ width }}">
+        <span class="{{tooltxtclass}}"></span>
+      </div>
+    </button>
+    <code id="{{ attributes.id }}"{{ attributes }}>{{ value }}</code>
+  </pre>
+{% endspaceless %}

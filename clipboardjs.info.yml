@@ -1,0 +1,6 @@
+name: Clipboard.js
+type: module
+description: A modern approach to copy text to clipboard.
+package: Content display
+core_version_requirement: ^8 || ^9 || ^10
+configure: clipboardjs.admin_settings

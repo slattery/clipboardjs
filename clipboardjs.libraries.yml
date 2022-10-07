@@ -1,0 +1,98 @@
+clipboardjs:
+  remote: https://github.com/zenorocha/clipboard.js/
+  version: "2.0.10"
+  license:
+    name: MIT
+    url: https://zenorocha.mit-license.org/
+    gpl-compatible: true
+  js:
+    /libraries/clipboard.js/dist/clipboard.js: { }
+drupal:
+  version: "1.0.1"
+  license:
+    name: GPL-2.0-or-later
+    url: https://www.gnu.org/licenses/gpl.html
+    gpl-compatible: true
+  js:
+    js/clipboard.js: {}
+  css:
+    component:
+      css/base.css: {}
+      css/tooltip.css: {}
+  dependencies:
+    - core/jquery
+    - core/once
+    - core/drupal
+    - clipboardjs/clipboardjs
+snippet:
+  version: "1.0.0"
+  license:
+    name: GPL-2.0-or-later
+    url: https://www.gnu.org/licenses/gpl.html
+    gpl-compatible: true
+  css:
+    component:
+      css/snippet.css: {}
+  dependencies:
+    - clipboardjs/clipboardjs
+    - clipboardjs/drupal
+button:
+  version: "1.0.0"
+  license:
+    name: GPL-2.0-or-later
+    url: https://www.gnu.org/licenses/gpl.html
+    gpl-compatible: true
+  css:
+    component:
+      css/button.css: {}
+  dependencies:
+    - clipboardjs/clipboardjs
+    - clipboardjs/drupal
+textfield:
+  version: "1.0.0"
+  license:
+    name: GPL-2.0-or-later
+    url: https://www.gnu.org/licenses/gpl.html
+    gpl-compatible: true
+  css:
+    component:
+      css/textfield.css: {}
+  dependencies:
+    - clipboardjs/clipboardjs
+    - clipboardjs/drupal
+textarea:
+  version: "1.0.0"
+  license:
+    name: GPL-2.0-or-later
+    url: https://www.gnu.org/licenses/gpl.html
+    gpl-compatible: true
+  css:
+    component:
+      css/textarea.css: {}
+  dependencies:
+    - clipboardjs/clipboardjs
+    - clipboardjs/drupal
+fieldablepath:
+  version: "1.0.0"
+  license:
+    name: GPL-2.0-or-later
+    url: https://www.gnu.org/licenses/gpl.html
+    gpl-compatible: true
+  css:
+    component:
+      css/button.css: {}
+  dependencies:
+    - clipboardjs/clipboardjs
+    - clipboardjs/drupal
+entityreference:
+  version: "1.0.0"
+  license:
+    name: GPL-2.0-or-later
+    url: https://www.gnu.org/licenses/gpl.html
+    gpl-compatible: true
+  css:
+    component:
+      css/button.css: {}
+  dependencies:
+    - clipboardjs/clipboardjs
+    - clipboardjs/drupal

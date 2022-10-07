@@ -1,0 +1,65 @@
+field.formatter.settings.clipboard:
+  type: mapping
+  label: Clipboard.js formatter settings
+  mapping:
+    label:
+      type: string
+      label: Label
+    alert_style:
+      type: string
+      label: Alert style
+    alert_text:
+      type: string
+      label: Alert text
+field.formatter.settings.clipboard_button:
+  type: mapping
+  label: Clipboard.js Button formatter settings
+  mapping:
+    label:
+      type: string
+      label: Label
+    alert_style:
+      type: string
+      label: Alert style
+    alert_text:
+      type: string
+      label: Alert text
+field.formatter.settings.clipboard_snippet:
+  type: mapping
+  label: Clipboard.js Snippet formatter settings
+  mapping:
+    label:
+      type: string
+      label: Label
+    alert_style:
+      type: string
+      label: Alert style
+    alert_text:
+      type: string
+      label: Alert text
+field.formatter.settings.clipboardjs_textarea:
+  type: mapping
+  label: Clipboard.js Textarea formatter settings
+  mapping:
+    label:
+      type: string
+      label: Label
+    alert_style:
+      type: string
+      label: Alert style
+    alert_text:
+      type: string
+      label: Alert text
+field.formatter.settings.clipboard_textfield:
+  type: mapping
+  label: Clipboard.js Textfield formatter settings
+  mapping:
+    label:
+      type: string
+      label: Label
+    alert_style:
+      type: string
+      label: Alert style
+    alert_text:
+      type: string
+      label: Alert text

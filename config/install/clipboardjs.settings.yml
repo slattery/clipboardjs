@@ -1,0 +1,5 @@
+def_tooltipclass: 'tooltip'
+def_tooltxtclass: 'tooltiptext'
+alt_tooltipclass: 'cliptip'
+alt_tooltxtclass: 'cliptiptext'
+css_override: false

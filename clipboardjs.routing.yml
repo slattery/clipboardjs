@@ -1,0 +1,7 @@
+clipboardjs.admin_settings:
+  path: '/admin/config/content/clipboardjs/settings'
+  defaults:
+    _form: '\Drupal\clipboardjs\Form\SettingsForm'
+    _title: 'Clipboard JS Settings'
+  requirements:
+    _permission: 'administer site configuration'

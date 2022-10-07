@@ -1,0 +1,19 @@
+/* Clipboardjs snippet styles */
+.clipboardjs-snippet {
+  background-color: rgb(248, 248, 248);
+}
+.clipboardjs-snippet button {
+  position: absolute;
+  right: 0;
+}
+.clipboardjs-snippet {
+  position: relative;
+}
+.clipboardjs-snippet code {
+  display: block;
+  overflow: auto;
+  padding: .5em;
+  white-space: nowrap;
+  min-height: 2em;
+  scrollbar-width: thin;
+}
